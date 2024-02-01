@@ -1,0 +1,44 @@
+package tz.ac.dit.simsbe.department;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import tz.ac.dit.simsbe.staff.Staff;
+import tz.ac.dit.simsbe.user.User;
+import tz.ac.dit.simsbe.utilities.Status;
+
+import java.time.LocalDateTime;
+
+@Data
+@Entity
+public class Department {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String code;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+    @ManyToOne
+    @JoinColumn(
+            name = "created_by",
+            referencedColumnName = "id"
+    )
+    private User createdBy;
+    @ManyToOne
+    @JoinColumn(
+            name = "updated_by",
+            referencedColumnName = "id"
+    )
+    private User updatedBy;
+    private Status status;
+    @OneToOne
+    @JoinColumn(
+            name = "hod_staff_id",
+            referencedColumnName = "id"
+    )
+    private Staff hod;
+}
