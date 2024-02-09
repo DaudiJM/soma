@@ -1,0 +1,95 @@
+export const enum EntityStatus {
+    ACTIVE = "ACTIVE",
+    DELETED = "DELETED",
+    DISABLED = "DISABLED",
+    PENDING = "PENDING",
+    APPROVED = "APPROVED",
+    AUTHORIZED = "AUTHORIZED",
+    UN_AUTHORIZED = "UN AUTHORIZED",
+    REJECTED = "REJECTED",
+    EXPIRED = "EXPIRED",
+    SUCCESSFUL = "SUCCESSFUL",
+    FAILED = "FAILED",
+    COMPLETED = "COMPLETED",
+    DEFAULT = "DEFAULT",
+    ALL = "ALL",
+}
+
+
+export const enum Action {
+    Activate = "Activate",
+    Delete = "Delete",
+    Disable = "Disable",
+    Approve = "Approve",
+    Authorize = "Authorize",
+    Reject = "Reject",
+    Un_Authorize = "Un Authorize",
+    Reset = "Reset",
+    Update = "Update",
+    Read = "Read"
+}
+
+export const enum REDUCER_ACTION_TYPE {
+    SET_TITLE,
+    SET_ROWS,
+    SET_DATA,
+    SET_STATUS,
+    SET_RECORDS,
+    SET_PAGINATION_MODEL,
+    TOGGLE_ALERT_MODAL,
+    TOGGLE_CREATE_MODAL,
+    TOGGLE_CONFIRMATION_MODAL,
+    TOGGLE_LOADING
+}
+
+export const enum DETAIL_REDUCER_ACTION_TYPE {
+    SET_DATA,
+    TOGGLE_CONFIRMATION_MODAL,
+    TOGGLE_CREATE_MODAL,
+    SET_STATUS,
+    SET_TITLE,
+    TOGGLE_LOADING
+}
+
+export enum Role {
+    ADMINISTRATOR = "ADMINISTRATOR",
+    STAFF = "STAFF",
+    STUDENT = "STUDENT",
+    LECTURER ="LECTURER",
+    DEPARTMENT_COORDINATOR = "DEPARTMENT COORNINATOR",
+    EXAMINATION_COORDINATOR = "EXAMINATION COORDINATOR",
+    HEAD_OF_DEPARTMENT = "HOD",
+    APPLICANT = "APPLICANT",
+    USER = "USER",
+    OPERATOR = "OPERATOR"
+}
+
+
+export const enum PAGE_STATE_ACTIONS {
+    SET_TITLE,
+    SET_ROWS,
+    SET_DATA,
+    SET_COUNT,
+    SET_SELECTED,
+    SET_DESCRIPTION,
+    SET_PAGINATION_MODEL,
+    SET_RECORDS,
+    SET_TARGET,
+    TOGGLE_CREATE,
+    TOGGLE_CONFIRMATION,
+    TOGGLE_ALERT,
+    TOGGLE_DETAILS,
+    SET_STATUS,
+    TOGGLE_SEARCH
+}
+
+export const enum DETAILS_PAGE_ACTION {
+    SET_DATA,
+    TOGGLE_UPDATE,
+    TOGGLE_CONFIRMATION,
+    TOGGLE_ALERT,
+    SET_TITLE,
+    SET_STATUS
+}
+
+export const StaffRoles = [Role.STAFF, Role.DEPARTMENT_COORDINATOR, Role.EXAMINATION_COORDINATOR, Role.HEAD_OF_DEPARTMENT, Role.LECTURER]
