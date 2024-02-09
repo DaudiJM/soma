@@ -51,12 +51,13 @@ public class ResultService {
                 System.out.println("results " + studentModuleResult);
                 if(studentDao.findByRegistrationNumber(studentModuleResult.getRegistrationNumber()).isPresent()){
                     Student student = studentDao.findByRegistrationNumber(studentModuleResult.getRegistrationNumber()).get();
-                    if(resultDao.findByStudentRegistrationNumberAndModuleCode(student.getRegistrationNumber(), studentModuleResult.getModuleCode()).isEmpty()){
+                    if(resultDao.findByStudentRegistrationNumberAndModuleCode(studentModuleResult.getRegistrationNumber(), module.getCode()).isEmpty()){
                         Result result = getResult(studentModuleResult, student, module);
                         uploadedResults.add(getStudentModuleResult(resultDao.save(result)));
-                    } else {
-                        System.out.println("Passed " + 3);
-                        Optional<Result> result = resultDao.findByStudentRegistrationNumberAndModuleCode(student.getRegistrationNumber(), studentModuleResult.getModuleCode());
+                        System.out.println("Duplicated");
+                    }
+                    else {
+                        Optional<Result> result = resultDao.findByStudentRegistrationNumberAndModuleCode(studentModuleResult.getRegistrationNumber(), module.getCode());
                         assert result.isPresent();
                         result.get().setCa(studentModuleResult.getCa());
                         uploadedResults.add(getStudentModuleResult(resultDao.save(result.get())));
@@ -97,7 +98,6 @@ public class ResultService {
         String responseMessage;
         ProgrammeModuleResults moduleResults = requestBody.getData();
         if(moduleDao.findByCode(moduleResults.getModuleCode()).isPresent()){
-//            Module module = moduleDao.findByCode(moduleResults.getModuleCode()).get();
             List<StudentModuleResult> uploadedResults = new ArrayList<>();
             for(StudentModuleResult studentModuleResult: moduleResults.getResults()){
                 for(Result result: resultDao.findAllByStudentRegistrationNumber(studentModuleResult.getRegistrationNumber())){
